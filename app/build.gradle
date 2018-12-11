@@ -45,7 +45,13 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
     testImplementation 'junit:junit:4.12'
     implementation 'me.jessyan:autosize:1.0.1'
+    implementation 'com.github.dueeeke.dkplayer:dkplayer-java:2.5.4'
+    implementation 'com.github.dueeeke.dkplayer:dkplayer-armv7a:2.5.4'
+    implementation 'com.github.dueeeke.dkplayer:dkplayer-ui:2.5.4'
+    implementation 'com.github.dueeeke.dkplayer:dkplayer-arm64:2.5.4'
 }
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'kotlin-android-extensions'
