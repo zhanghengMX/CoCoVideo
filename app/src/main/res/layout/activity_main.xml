@@ -10,11 +10,11 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/mainActivityViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorAccent">
+        android:layout_height="match_parent">
     </android.support.v4.view.ViewPager>
 
     <android.support.design.widget.BottomNavigationView
+        android:id="@+id/mainBottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorAppTheme"
