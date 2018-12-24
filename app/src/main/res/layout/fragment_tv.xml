@@ -12,22 +12,8 @@
         android:id="@+id/tvFragmentTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent">
-
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Left"/>
-
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Center"/>
-
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Right"/>
+        android:background="@color/colorAccent"
+        app:tabMode="scrollable">
     </android.support.design.widget.TabLayout>
 
     <android.support.v4.view.ViewPager

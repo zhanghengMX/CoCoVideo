@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.hx.cocovideo.R
+import com.hx.cocovideo.adapter.CategoryViewPagerAdapter
 import kotlinx.android.synthetic.main.fragment_tv.*
 
 class TVFragment : Fragment() {
@@ -24,9 +25,14 @@ class TVFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         for (tab in tabList) {
-            tvFragmentTabLayout.addTab(tvFragmentTabLayout.newTab().setText(tab))
+            tvFragmentTabLayout.addTab(tvFragmentTabLayout.newTab())
             fragments.add(CategoryCommonFragment())
         }
-        tvFragmentViewPager
+        tvFragmentViewPager.adapter = CategoryViewPagerAdapter(fragmentManager!!,fragments)
+        tvFragmentTabLayout.setupWithViewPager(tvFragmentViewPager)
+        for (tab in tabList) {
+            val index = tabList.indexOf(tab)
+            tvFragmentTabLayout.getTabAt(index)?.text = tab
+        }
     }
 }
