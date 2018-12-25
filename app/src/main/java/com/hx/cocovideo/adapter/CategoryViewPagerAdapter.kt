@@ -11,13 +11,19 @@ import com.henry.cocovideo.bean.CategoryItem
  * date：2018/12/24
  * description：
  */
-open class CategoryViewPagerAdapter(fm: FragmentManager, private val fragmrntList : MutableList<Fragment>) : FragmentPagerAdapter(fm) {
+open class CategoryViewPagerAdapter(fm: FragmentManager,
+                                    private val fragmrntList : MutableList<Fragment>,
+                                    private val tabItems : MutableList<CategoryItem>) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
         return fragmrntList[position]
     }
 
     override fun getCount(): Int {
         return fragmrntList.size
+    }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return tabItems[position].name
     }
 
     fun addCatrgorys(list : MutableList<Fragment>) {

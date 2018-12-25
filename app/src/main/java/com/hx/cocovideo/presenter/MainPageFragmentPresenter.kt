@@ -26,6 +26,10 @@ class MainPageFragmentPresenter(override var view: MainPageFragmentContract.View
         model.requestCategoryData(videoType)
     }
 
+    override fun requestVideoByCategoryName(categoryName: String) {
+        model.requestVideoByCategoryName(categoryName)
+    }
+
     override fun start(params: Bundle) {
 
     }

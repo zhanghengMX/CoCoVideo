@@ -7,6 +7,7 @@ import cn.bmob.v3.listener.FindListener
 import com.henry.cocovideo.base.BaseModel
 import com.henry.cocovideo.base.DataResponseListener
 import com.henry.cocovideo.bean.CategoryItem
+import com.henry.cocovideo.bean.VideoDetail
 
 /**
  * author：heng.zhang
@@ -14,7 +15,7 @@ import com.henry.cocovideo.bean.CategoryItem
  * description：
  */
 class MainPageFragmentModel(override var responseListener: DataResponseListener) : BaseModel {
-    fun requestCategoryData(videoType : String) {
+    fun requestCategoryData(videoType: String) {
         val query = BmobQuery<CategoryItem>()
         query.setLimit(50)
         query.findObjects(object : FindListener<CategoryItem>() {
@@ -27,5 +28,16 @@ class MainPageFragmentModel(override var responseListener: DataResponseListener)
             }
 
         })
+    }
+
+    fun requestVideoByCategoryName(categoryName: String) {
+        val query = BmobQuery<VideoDetail>()
+        query.addWhereContainsAll("genres", listOf(categoryName))
+                .findObjects(object : FindListener<VideoDetail>() {
+                    override fun done(p0: MutableList<VideoDetail>?, p1: BmobException?) {
+                        //TODO 使用数据构建UI，传递给RecylerView
+                    }
+
+                })
     }
 }

@@ -16,5 +16,6 @@ interface MainPageFragmentContract {
 
     interface Presenter : BasePresenter<View> {
         fun requestCategoryData(videoType : String)
+        fun requestVideoByCategoryName(categoryName : String)
     }
 }

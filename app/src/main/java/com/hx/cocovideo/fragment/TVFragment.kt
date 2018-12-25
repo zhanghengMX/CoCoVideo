@@ -2,7 +2,9 @@ package com.hx.cocovideo.fragment
 
 
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,17 +20,18 @@ class TVFragment : Fragment(), MainPageFragmentContract.View {
     override lateinit var presenter: MainPageFragmentContract.Presenter
 
     override fun refreshCategoryData(data: MutableList<CategoryItem>) {
+        clear()
         for (category in data) {
             fragments.add(CategoryCommonFragment())
-            tvFragmentTabLayout.addTab(tvFragmentTabLayout.newTab())
         }
-        viewPagerAdapter = CategoryViewPagerAdapter(fragmentManager!!, fragments)
+        viewPagerAdapter = CategoryViewPagerAdapter(fragmentManager!!, fragments, data)
         tvFragmentViewPager.adapter = viewPagerAdapter
         tvFragmentTabLayout.setupWithViewPager(tvFragmentViewPager)
-        for (category in data) {
-            val index = data.indexOf(category)
-            tvFragmentTabLayout.getTabAt(index)?.text = category.name
-        }
+    }
+
+    private fun clear() {
+        tvFragmentTabLayout.removeAllTabs()
+        fragments.clear()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +52,21 @@ class TVFragment : Fragment(), MainPageFragmentContract.View {
     private lateinit var viewPagerAdapter : CategoryViewPagerAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        tvFragmentTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                Log.d("TVFragment", "onTabReselected")
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                Log.d("TVFragment", "onTabUnselected")
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                presenter.requestVideoByCategoryName(tab?.text as String)
+                Log.d("TVFragment", "onTabSelected   ${tab?.text}")
+            }
+
+        })
 
         presenter.requestCategoryData("tv")
     }
