@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.view.MenuItem
+import com.henry.cocovideo.bean.CategoryItem
 import com.hx.cocovideo.adapter.MainPageViewPagerAdapter
 import com.hx.cocovideo.fragment.MovieFragment
 import com.hx.cocovideo.fragment.TVFragment
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initView()
+        bmobTestFun()
     }
 
     private fun initView() {
@@ -50,5 +52,10 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+
+
+    fun bmobTestFun() {
     }
 }

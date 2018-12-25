@@ -3,6 +3,7 @@ package com.hx.cocovideo.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.henry.cocovideo.bean.CategoryItem
 
 /**
  * Copyright (c) 2018, 北京视达科科技有限责任公司 All rights reserved.
@@ -19,8 +20,8 @@ open class CategoryViewPagerAdapter(fm: FragmentManager, private val fragmrntLis
         return fragmrntList.size
     }
 
-    fun addFragment(fragments : MutableList<Fragment>) {
-        fragmrntList.addAll(fragments)
+    fun addCatrgorys(list : MutableList<Fragment>) {
+        fragmrntList.addAll(list)
         notifyDataSetChanged()
     }
 }
