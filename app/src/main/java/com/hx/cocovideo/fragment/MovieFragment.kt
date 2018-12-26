@@ -26,7 +26,7 @@ class MovieFragment : Fragment(), MainPageFragmentContract.View {
     override fun refreshCategoryData(data: MutableList<CategoryItem>) {
         clear()
         for (category in data) {
-            fragments.add(CategoryCommonFragment.newInstence(category.name))
+            fragments.add(CategoryCommonFragment.newInstence(category.name, "movie"))
         }
         viewPagerAdapter = CategoryViewPagerAdapter(childFragmentManager!!, fragments, data)
         movieFragmentViewPager.adapter = viewPagerAdapter

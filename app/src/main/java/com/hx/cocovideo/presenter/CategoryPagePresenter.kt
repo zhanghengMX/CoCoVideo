@@ -26,8 +26,8 @@ class CategoryPagePresenter(override var view: CategoryPageContentContract.View)
 
     })
 
-    override fun requestVideoByCategoryName(categoryName: String) {
-        model.requestVideoByCategoryName(categoryName)
+    override fun requestVideoByCategoryName(categoryName: String, videoType: String) {
+        model.requestVideoByCategoryName(categoryName, videoType)
     }
 
     override fun start(params: Bundle) {

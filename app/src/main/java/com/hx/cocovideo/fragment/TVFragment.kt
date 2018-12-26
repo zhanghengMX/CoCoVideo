@@ -22,7 +22,7 @@ class TVFragment : Fragment(), MainPageFragmentContract.View {
     override fun refreshCategoryData(data: MutableList<CategoryItem>) {
         clear()
         for (category in data) {
-            fragments.add(CategoryCommonFragment.newInstence(category.name))
+            fragments.add(CategoryCommonFragment.newInstence(category.name, "tv"))
         }
         viewPagerAdapter = CategoryViewPagerAdapter(childFragmentManager!!, fragments, data)
         tvFragmentViewPager.adapter = viewPagerAdapter

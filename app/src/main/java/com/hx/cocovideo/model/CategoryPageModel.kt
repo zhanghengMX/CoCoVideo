@@ -16,9 +16,10 @@ import com.henry.cocovideo.bean.VideoDetail
  */
 class CategoryPageModel(override var responseListener: DataResponseListener) : BaseModel {
 
-    fun requestVideoByCategoryName(categoryName: String) {
+    fun requestVideoByCategoryName(categoryName: String, type: String) {
         val query = BmobQuery<VideoDetail>()
         query.addWhereContainsAll("genres", listOf(categoryName))
+                .addWhereEqualTo("subType",type)
                 .findObjects(object : FindListener<VideoDetail>() {
                     override fun done(p0: MutableList<VideoDetail>?, p1: BmobException?) {
                         if (p1 == null && p0 != null) {

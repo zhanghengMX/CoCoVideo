@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initView()
-        bmobTestFun()
+//        bmobTestFun()
         getAndroiodScreenProperty()
     }
 
@@ -74,5 +74,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun bmobTestFun() {
+        CategoryItem("动作","movie").save()
+        CategoryItem("喜剧","movie").save()
+        CategoryItem("犯罪","movie").save()
+        CategoryItem("战争","movie").save()
+        CategoryItem("动画","movie").save()
+        CategoryItem("爱情","movie").save()
+        CategoryItem("科幻","movie").save()
+        CategoryItem("悬疑","movie").save()
+        CategoryItem("恐怖","movie").save()
+        CategoryItem("冒险","movie").save()
+        CategoryItem("剧情","movie").save()
+        CategoryItem("喜剧","tv").save()
+        CategoryItem("爱情","tv").save()
     }
 }

@@ -23,11 +23,12 @@ class CategoryCommonFragment : Fragment(), CategoryPageContentContract.View {
     private lateinit var recyclerAdapter: CategoryPageRecyclerViewAdapter
 
     private lateinit var title: String
-
+    private lateinit var type: String
     companion object {
-        fun newInstence(title : String): CategoryCommonFragment {
+        fun newInstence(title : String, type: String): CategoryCommonFragment {
             val fragment = CategoryCommonFragment()
             fragment.title = title
+            fragment.type = type
             return fragment
         }
     }
@@ -46,14 +47,10 @@ class CategoryCommonFragment : Fragment(), CategoryPageContentContract.View {
         recyclerAdapter = CategoryPageRecyclerViewAdapter(mutableListOf())
         categoryPageRecyclerView.layoutManager = GridLayoutManager(activity, 2)
         categoryPageRecyclerView.adapter = recyclerAdapter
+        presenter.requestVideoByCategoryName(title,type)
     }
 
     override fun refreshPageContent(data: MutableList<VideoDetail>) {
         recyclerAdapter.addVideoItems(data)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        presenter.requestVideoByCategoryName(title)
     }
 }

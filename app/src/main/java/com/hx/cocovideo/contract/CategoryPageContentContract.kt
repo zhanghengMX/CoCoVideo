@@ -16,6 +16,6 @@ interface CategoryPageContentContract {
     }
 
     interface Presenter : BasePresenter<View> {
-        fun requestVideoByCategoryName(categoryName : String)
+        fun requestVideoByCategoryName(categoryName : String, videoType: String)
     }
 }

@@ -18,6 +18,7 @@ class MainPageFragmentModel(override var responseListener: DataResponseListener)
     fun requestCategoryData(videoType: String) {
         val query = BmobQuery<CategoryItem>()
         query.setLimit(50)
+        query.addWhereEqualTo("type", videoType)
         query.findObjects(object : FindListener<CategoryItem>() {
             override fun done(p0: MutableList<CategoryItem>?, p1: BmobException?) {
                 if (p1 == null && p0 != null) {
