@@ -1,11 +1,15 @@
 package com.hx.cocovideo
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
+import android.util.DisplayMetrics
+import android.util.Log
 import android.view.MenuItem
+import android.view.WindowManager
 import com.henry.cocovideo.bean.CategoryItem
 import com.hx.cocovideo.adapter.MainPageViewPagerAdapter
 import com.hx.cocovideo.fragment.MovieFragment
@@ -21,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initView()
         bmobTestFun()
+        getAndroiodScreenProperty()
     }
 
     private fun initView() {
@@ -54,7 +59,19 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-
+    fun getAndroiodScreenProperty() {
+        val wm = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val dm = DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(dm);
+        val width = dm.widthPixels // 屏幕宽度（像素）
+        val height = dm.heightPixels // 屏幕高度（像素）
+        val density = dm.density //屏幕密度（0.75 / 1.0 / 1.5）
+        val densityDpi = dm.densityDpi //屏幕密度dpi（120 / 160 / 240）
+        //屏幕宽度算法:屏幕宽度（像素）/屏幕密度
+        val screenWidth =(width/density) //屏幕宽度(dp)
+        val screenHeight =(height/density) //屏幕高度(dp)
+        Log.e("MainActivity", "$screenWidth======$screenHeight")
+    }
 
     fun bmobTestFun() {
     }

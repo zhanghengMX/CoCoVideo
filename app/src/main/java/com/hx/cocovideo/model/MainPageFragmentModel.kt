@@ -29,15 +29,4 @@ class MainPageFragmentModel(override var responseListener: DataResponseListener)
 
         })
     }
-
-    fun requestVideoByCategoryName(categoryName: String) {
-        val query = BmobQuery<VideoDetail>()
-        query.addWhereContainsAll("genres", listOf(categoryName))
-                .findObjects(object : FindListener<VideoDetail>() {
-                    override fun done(p0: MutableList<VideoDetail>?, p1: BmobException?) {
-                        //TODO 使用数据构建UI，传递给RecylerView
-                    }
-
-                })
-    }
 }

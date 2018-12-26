@@ -22,9 +22,9 @@ class TVFragment : Fragment(), MainPageFragmentContract.View {
     override fun refreshCategoryData(data: MutableList<CategoryItem>) {
         clear()
         for (category in data) {
-            fragments.add(CategoryCommonFragment())
+            fragments.add(CategoryCommonFragment.newInstence(category.name))
         }
-        viewPagerAdapter = CategoryViewPagerAdapter(fragmentManager!!, fragments, data)
+        viewPagerAdapter = CategoryViewPagerAdapter(childFragmentManager!!, fragments, data)
         tvFragmentViewPager.adapter = viewPagerAdapter
         tvFragmentTabLayout.setupWithViewPager(tvFragmentViewPager)
     }
@@ -62,12 +62,10 @@ class TVFragment : Fragment(), MainPageFragmentContract.View {
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                presenter.requestVideoByCategoryName(tab?.text as String)
                 Log.d("TVFragment", "onTabSelected   ${tab?.text}")
             }
 
         })
-
         presenter.requestCategoryData("tv")
     }
 }
