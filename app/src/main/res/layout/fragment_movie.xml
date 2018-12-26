@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.MovieFragment">
+    android:orientation="vertical"
+    tools:context=".fragment.TVFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.design.widget.TabLayout
+        android:id="@+id/movieFragmentTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAppTheme"
+        app:tabMode="scrollable">
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/movieFragmentViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="电影的fragment" />
-
-</FrameLayout>
+        android:background="@color/colorPageBackground">
+    </android.support.v4.view.ViewPager>
+</LinearLayout>
