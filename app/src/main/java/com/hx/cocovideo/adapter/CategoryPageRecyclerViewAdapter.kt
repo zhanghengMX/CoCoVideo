@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.henry.cocovideo.base.RecyclerOnItemClickListener
 import com.henry.cocovideo.bean.VideoDetail
 import com.hx.cocovideo.R
 
@@ -16,6 +17,12 @@ import com.hx.cocovideo.R
  * description：
  */
 class CategoryPageRecyclerViewAdapter(var datas : MutableList<VideoDetail>) : RecyclerView.Adapter<CategoryPageRecyclerViewAdapter.CategoryPageViewHolder>() {
+
+    private var onclickListener : RecyclerOnItemClickListener<VideoDetail>? = null
+
+    fun setOnClickListener(listener : RecyclerOnItemClickListener<VideoDetail>) {
+        onclickListener = listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryPageViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_poster_item, parent, false)
@@ -37,6 +44,12 @@ class CategoryPageRecyclerViewAdapter(var datas : MutableList<VideoDetail>) : Re
                 .load(video.images["medium"])
                 .into(holder.posterIv)
         holder.videoNameTv.text = video.name
+        holder.itemView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                onclickListener?.onClick(video)
+            }
+
+        })
     }
 
     class CategoryPageViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {

@@ -7,7 +7,6 @@ import cn.bmob.v3.listener.FindListener
 import com.henry.cocovideo.base.BaseModel
 import com.henry.cocovideo.base.DataResponseListener
 import com.henry.cocovideo.bean.CategoryItem
-import com.henry.cocovideo.bean.VideoDetail
 
 /**
  * author：heng.zhang

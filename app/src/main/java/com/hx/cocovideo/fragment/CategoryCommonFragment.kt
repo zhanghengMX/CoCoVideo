@@ -1,6 +1,7 @@
 package com.hx.cocovideo.fragment
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -8,9 +9,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.henry.cocovideo.base.RecyclerOnItemClickListener
 import com.henry.cocovideo.bean.VideoDetail
 
 import com.hx.cocovideo.R
+import com.hx.cocovideo.activity.VideoDetailActivity
 import com.hx.cocovideo.adapter.CategoryPageRecyclerViewAdapter
 import com.hx.cocovideo.contract.CategoryPageContentContract
 import com.hx.cocovideo.presenter.CategoryPagePresenter
@@ -48,6 +51,15 @@ class CategoryCommonFragment : Fragment(), CategoryPageContentContract.View {
         categoryPageRecyclerView.layoutManager = GridLayoutManager(activity, 2)
         categoryPageRecyclerView.adapter = recyclerAdapter
         presenter.requestVideoByCategoryName(title,type)
+        recyclerAdapter.setOnClickListener(object: RecyclerOnItemClickListener<VideoDetail> {
+            override fun onClick(t: VideoDetail) {
+                val intent = Intent(activity, VideoDetailActivity::class.java)
+                intent.putExtra("doubanId", t.doubanId)
+                intent.putExtra("name", t.name)
+                context?.startActivity(intent)
+            }
+
+        })
     }
 
     override fun refreshPageContent(data: MutableList<VideoDetail>) {

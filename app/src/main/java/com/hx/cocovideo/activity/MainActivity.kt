@@ -1,4 +1,4 @@
-package com.hx.cocovideo
+package com.hx.cocovideo.activity
 
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.WindowManager
 import com.henry.cocovideo.bean.CategoryItem
+import com.hx.cocovideo.R
 import com.hx.cocovideo.adapter.MainPageViewPagerAdapter
 import com.hx.cocovideo.fragment.MovieFragment
 import com.hx.cocovideo.fragment.TVFragment

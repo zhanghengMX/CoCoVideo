@@ -19,6 +19,7 @@ class CategoryPageModel(override var responseListener: DataResponseListener) : B
     fun requestVideoByCategoryName(categoryName: String, type: String) {
         val query = BmobQuery<VideoDetail>()
         query.addWhereContainsAll("genres", listOf(categoryName))
+                query.addQueryKeys("doubanId,name,images")
                 .addWhereEqualTo("subType",type)
                 .findObjects(object : FindListener<VideoDetail>() {
                     override fun done(p0: MutableList<VideoDetail>?, p1: BmobException?) {
