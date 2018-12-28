@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".activity.VideoDetailActivity">
 
+    <com.dueeeke.videoplayer.player.IjkVideoView
+        android:id="@+id/ijkPlayerView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
 </android.support.constraint.ConstraintLayout>

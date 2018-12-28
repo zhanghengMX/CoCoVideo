@@ -9,6 +9,4 @@ import android.os.Bundle
  */
 interface BasePresenter<T> {
     var view : T
-
-    fun start(params: Bundle)
 }
