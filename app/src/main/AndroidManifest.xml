@@ -41,7 +41,9 @@
             android:name=".player.CoCoPlayer"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".activity.VideoDetailActivity"></activity>
+        <activity android:name=".activity.VideoDetailActivity"
+                  android:configChanges="orientation|screenSize|keyboardHidden"
+                  android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
