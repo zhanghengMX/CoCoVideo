@@ -25,6 +25,7 @@ class VideoDetailActivity : AppCompatActivity(), VideoDetailContract.View {
 
     private lateinit var currentShowFragment: DetailBaseFragment
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video_detail)
@@ -35,7 +36,7 @@ class VideoDetailActivity : AppCompatActivity(), VideoDetailContract.View {
     }
 
     fun initView() {
-        detailTabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
+        detailTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
 
@@ -44,7 +45,7 @@ class VideoDetailActivity : AppCompatActivity(), VideoDetailContract.View {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 Log.d("HR", "onTabSelected   ${tab?.text}")
-                when(tab?.text) {
+                when (tab?.text) {
                     "详情" -> {
                         if (!this@VideoDetailActivity::descFragment.isInitialized) {
                             descFragment = DetailPageDescFragment()
@@ -67,7 +68,7 @@ class VideoDetailActivity : AppCompatActivity(), VideoDetailContract.View {
 
     fun changeFragment(fragment: DetailBaseFragment) {
         val transaction = fragmentManager.beginTransaction()
-        if(fragment.isAdded) {
+        if (fragment.isAdded) {
             transaction.hide(currentShowFragment).show(fragment).commit()
         } else {
             if (this::currentShowFragment.isInitialized) {
@@ -78,11 +79,10 @@ class VideoDetailActivity : AppCompatActivity(), VideoDetailContract.View {
         currentShowFragment = fragment
     }
 
-    fun loadData() {
+    private fun loadData() {
         val videoId = intent.getStringExtra("doubanId")
-        val videoName = intent.getStringExtra("name")
-        presenter.getVideoDetailData(videoId)
-        presenter.getVideoUrls(videoId)
+        presenter.requestVideoDetailData(videoId)
+        presenter.requestVideoUrls(videoId)
     }
 
     private fun initPlayer() {
@@ -102,7 +102,10 @@ class VideoDetailActivity : AppCompatActivity(), VideoDetailContract.View {
         detailIjkPlayerView.setPlayerConfig(playerConfig)
     }
 
-    private fun doPlay(videoName: String, url: String) {
+    fun doPlay(videoName: String, url: String) {
+        if (detailIjkPlayerView.isPlaying) {
+            detailIjkPlayerView.release()
+        }
         detailIjkPlayerView.setUrl(url) //设置视频地址
         detailIjkPlayerView.setTitle(videoName) //设置视频标题
         detailIjkPlayerView.start() //开始播放，不调用则不自动播放

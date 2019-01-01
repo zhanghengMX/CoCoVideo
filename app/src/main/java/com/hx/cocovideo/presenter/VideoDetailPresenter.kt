@@ -14,14 +14,17 @@ import com.hx.cocovideo.model.VideoDetailModel
  * description：
  */
 class VideoDetailPresenter(override var view: VideoDetailContract.View) : VideoDetailContract.Presenter {
-    override fun getVideoDetailData(videoId: String) {
+    override fun requestVideoDetailData(videoId: String) {
         model.requestVideoDetail(videoId)
     }
 
-    override fun getVideoUrls(videoId: String) {
+    override fun requestVideoUrls(videoId: String) {
         model.requestVideoUrl(videoId)
     }
 
+    override fun getLocalVideoUrls(): MutableList<VideoUrl> {
+        return model.urls
+    }
     private val model = VideoDetailModel(object : DataResponseListener {
         override fun onResult(dataType: String, result: Any) {
             if(TextUtils.equals(dataType, BaseModel.DATA_TYPE_VIDEO_URL)) {

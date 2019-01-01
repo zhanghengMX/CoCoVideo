@@ -16,6 +16,8 @@ import com.henry.cocovideo.bean.VideoUrl
  * description：
  */
 class VideoDetailModel(override var responseListener: DataResponseListener) : BaseModel {
+    lateinit var urls: MutableList<VideoUrl>
+
     fun requestVideoDetail(videoId: String) {
         val query = BmobQuery<VideoDetail>()
         query.addWhereEqualTo("doubanId", videoId)
@@ -35,6 +37,7 @@ class VideoDetailModel(override var responseListener: DataResponseListener) : Ba
                 .findObjects(object : FindListener<VideoUrl>() {
                     override fun done(p0: MutableList<VideoUrl>?, p1: BmobException?) {
                         if(p1 == null && p0 != null) {
+                            urls = p0
                             responseListener.onResult(BaseModel.DATA_TYPE_VIDEO_URL, p0)
                         }
                     }

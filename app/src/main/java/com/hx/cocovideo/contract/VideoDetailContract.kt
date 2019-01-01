@@ -18,7 +18,8 @@ interface VideoDetailContract {
     }
 
     interface Presenter : BasePresenter<View> {
-        fun getVideoDetailData(videoId: String)
-        fun getVideoUrls(videoId: String)
+        fun requestVideoDetailData(videoId: String)
+        fun requestVideoUrls(videoId: String)
+        fun getLocalVideoUrls(): MutableList<VideoUrl>
     }
 }
