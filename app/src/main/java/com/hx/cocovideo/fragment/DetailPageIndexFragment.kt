@@ -8,7 +8,9 @@ import android.view.ViewGroup
 
 import com.hx.cocovideo.R
 
-class DetailpageFragment : Fragment() {
+class DetailPageIndexFragment : DetailBaseFragment() {
+    override fun refreshFragmentData(data: Any) {
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

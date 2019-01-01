@@ -3,6 +3,7 @@ package com.hx.cocovideo.presenter
 import android.text.TextUtils
 import com.henry.cocovideo.base.BaseModel
 import com.henry.cocovideo.base.DataResponseListener
+import com.henry.cocovideo.bean.VideoDetail
 import com.henry.cocovideo.bean.VideoUrl
 import com.hx.cocovideo.contract.VideoDetailContract
 import com.hx.cocovideo.model.VideoDetailModel
@@ -25,6 +26,8 @@ class VideoDetailPresenter(override var view: VideoDetailContract.View) : VideoD
         override fun onResult(dataType: String, result: Any) {
             if(TextUtils.equals(dataType, BaseModel.DATA_TYPE_VIDEO_URL)) {
                 view.onVideoUrlsLoaded(result as MutableList<VideoUrl>)
+            } else if(TextUtils.equals(dataType, BaseModel.DATA_TYPE_VIDEO_DETAIL)) {
+                view.onVideoDetailLoaded(result as VideoDetail)
             }
         }
 

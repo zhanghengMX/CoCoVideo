@@ -3,18 +3,27 @@ package com.hx.cocovideo.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.util.Log
 import com.dueeeke.videocontroller.StandardVideoController
 import com.dueeeke.videoplayer.player.PlayerConfig
 import com.henry.cocovideo.bean.VideoDetail
 import com.henry.cocovideo.bean.VideoUrl
 import com.hx.cocovideo.R
 import com.hx.cocovideo.contract.VideoDetailContract
+import com.hx.cocovideo.fragment.DetailBaseFragment
+import com.hx.cocovideo.fragment.DetailPageDescFragment
+import com.hx.cocovideo.fragment.DetailPageIndexFragment
 import com.hx.cocovideo.presenter.VideoDetailPresenter
 import kotlinx.android.synthetic.main.activity_video_detail.*
 
 class VideoDetailActivity : AppCompatActivity(), VideoDetailContract.View {
 
     override lateinit var presenter: VideoDetailContract.Presenter
+
+    private lateinit var descFragment: DetailBaseFragment
+    private lateinit var indexFragment: DetailBaseFragment
+
+    private lateinit var currentShowFragment: DetailBaseFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +43,39 @@ class VideoDetailActivity : AppCompatActivity(), VideoDetailContract.View {
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
+                Log.d("HR", "onTabSelected   ${tab?.text}")
+                when(tab?.text) {
+                    "详情" -> {
+                        if (!this@VideoDetailActivity::descFragment.isInitialized) {
+                            descFragment = DetailPageDescFragment()
+                        }
+                        changeFragment(descFragment)
+                    }
+                    "选集" -> {
+                        if (!this@VideoDetailActivity::indexFragment.isInitialized) {
+                            indexFragment = DetailPageIndexFragment()
+                        }
+                        changeFragment(indexFragment)
+                    }
+                }
             }
 
         })
+        detailTabLayout.addTab(detailTabLayout.newTab().setText("详情"))
+        detailTabLayout.addTab(detailTabLayout.newTab().setText("选集"))
     }
 
-    fun changeFragment(tabId: String) {
-
+    fun changeFragment(fragment: DetailBaseFragment) {
+        val transaction = fragmentManager.beginTransaction()
+        if(fragment.isAdded) {
+            transaction.hide(currentShowFragment).show(fragment).commit()
+        } else {
+            if (this::currentShowFragment.isInitialized) {
+                transaction.hide(currentShowFragment)
+            }
+            transaction.add(R.id.detailPageFragmentLayout, fragment).commit()
+        }
+        currentShowFragment = fragment
     }
 
     fun loadData() {
@@ -74,7 +109,7 @@ class VideoDetailActivity : AppCompatActivity(), VideoDetailContract.View {
     }
 
     override fun onVideoDetailLoaded(videoData: VideoDetail) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        descFragment.refreshFragmentData(videoData)
     }
 
     override fun onVideoUrlsLoaded(urls: MutableList<VideoUrl>) {
