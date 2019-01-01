@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
         fragmentList = mutableListOf()
-        fragmentList.add(TVFragment())
         fragmentList.add(MovieFragment())
+        fragmentList.add(TVFragment())
         fragmentList.add(UserCenterFragment())
         mainActivityViewPager.adapter = MainPageViewPagerAdapter(supportFragmentManager, fragmentList)
         mainActivityViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
