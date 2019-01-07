@@ -3,6 +3,7 @@ package com.hx.cocovideo.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.text.TextUtils
 import android.util.Log
 import com.dueeeke.videocontroller.StandardVideoController
 import com.dueeeke.videoplayer.player.PlayerConfig
@@ -63,7 +64,9 @@ class VideoDetailActivity : AppCompatActivity(), VideoDetailContract.View {
 
         })
         detailTabLayout.addTab(detailTabLayout.newTab().setText("详情"))
-        detailTabLayout.addTab(detailTabLayout.newTab().setText("选集"))
+        if (TextUtils.equals("tv", intent.getStringExtra("subType"))) {
+            detailTabLayout.addTab(detailTabLayout.newTab().setText("选集"))
+        }
     }
 
     fun changeFragment(fragment: DetailBaseFragment) {

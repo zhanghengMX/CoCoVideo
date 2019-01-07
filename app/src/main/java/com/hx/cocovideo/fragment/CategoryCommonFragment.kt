@@ -56,6 +56,7 @@ class CategoryCommonFragment : Fragment(), CategoryPageContentContract.View {
                 val intent = Intent(activity, VideoDetailActivity::class.java)
                 intent.putExtra("doubanId", t.doubanId)
                 intent.putExtra("name", t.name)
+                intent.putExtra("subType", t.subType)
                 context?.startActivity(intent)
             }
 
