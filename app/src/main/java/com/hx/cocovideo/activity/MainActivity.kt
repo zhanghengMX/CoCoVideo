@@ -50,8 +50,8 @@ class MainActivity : AppCompatActivity() {
         mainBottomNavigationView.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
-                    R.id.tvBottomTab -> mainActivityViewPager.currentItem = 0
-                    R.id.movieBottomTab -> mainActivityViewPager.currentItem = 1
+                    R.id.movieBottomTab -> mainActivityViewPager.currentItem = 0
+                    R.id.tvBottomTab -> mainActivityViewPager.currentItem = 1
                     R.id.userCenterBottomTab -> mainActivityViewPager.currentItem = 2
                 }
                 return false
