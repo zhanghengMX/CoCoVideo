@@ -9,7 +9,7 @@
     </style>
 
     <style name="MyTablayoutstyle" parent="Base.Widget.Design.TabLayout">
-        <item name="tabBackground">@drawable/detail_tab_background</item>
+        <item name="tabBackground">@drawable/style_detail_tab_background</item>
         <item name="tabIndicatorHeight">0dp</item>
         <item name="android:textSize">20sp</item>
     </style>
