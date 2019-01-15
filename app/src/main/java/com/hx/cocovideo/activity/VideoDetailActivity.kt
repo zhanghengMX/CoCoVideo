@@ -125,7 +125,7 @@ class VideoDetailActivity : AppCompatActivity(), VideoDetailContract.View {
                 videoUrl = url
             }
         }
-//        doPlay(urls[0].name, videoUrl)
+        doPlay(urls[0].name, videoUrl)
     }
 
     override fun onPause() {
