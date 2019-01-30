@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.RegisterActivity"
+    android:background="@mipmap/login_bkg">
+
+    <EditText
+        android:id="@+id/registerTelephoneNumEt"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="80dp"
+        android:inputType="number"
+        android:hint="@string/please_input_telephone_number"
+        android:drawablePadding="8dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:drawableLeft="@mipmap/account_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/registerVerificationCodeEt"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@mipmap/verification_code_icon"
+        android:drawablePadding="8dp"
+        android:hint="@string/please_input_verification_code"
+        android:inputType="number"
+        android:maxLines="1"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerTelephoneNumEt"/>
+
+    <EditText
+        android:id="@+id/registerPasswordEt"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@mipmap/password_icon"
+        android:drawablePadding="8dp"
+        android:hint="@string/please_input_password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerVerificationCodeEt"/>
+
+    <EditText
+        android:id="@+id/registerPasswordVerifyEt"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@mipmap/password_icon"
+        android:drawablePadding="8dp"
+        android:hint="@string/please_input_password_again"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPasswordEt"/>
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/style_login_button"
+        android:onClick="onRegisterButtonClick"
+        android:text="@string/action_register"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPasswordVerifyEt"/>
+
+    <Button
+        android:id="@+id/getVerificationCodeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="130dp"
+        android:text="获取验证码"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+</android.support.constraint.ConstraintLayout>

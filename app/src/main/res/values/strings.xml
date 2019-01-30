@@ -7,5 +7,11 @@
     <!-- Strings related to login -->
     <string name="prompt_user_name">用户名/手机号</string>
     <string name="prompt_password">密码</string>
-    <string name="action_sign_in">登    录</string>
+    <string name="action_sign_in">登 录</string>
+    <string name="action_register">注 册</string>
+    <string name="please_input_verification_code">请输入验证码</string>
+    <string name="please_input_telephone_number">请输入手机号码</string>
+    <string name="please_input_password">请输入密码</string>
+    <string name="please_input_password_again">请再次输入密码</string>
+
 </resources>
