@@ -13,5 +13,7 @@ interface BaseModel {
         val DATA_TYPE_CATEGORY_VIDEO = "@data-type-category-video"
         val DATA_TYPE_VIDEO_DETAIL = "@data-type-video-detail"
         val DATA_TYPE_VIDEO_URL = "@data-type-video-url"
+        val DATA_TYPE_LOGIN_SUCCESS = "@data-type-login-success"
+        val DATA_TYPE_LOGIN_FAILED = "@data-type-login-failed"
     }
 }

@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loginLogoIconIv">
 
         <AutoCompleteTextView
-            android:id="@+id/email"
+            android:id="@+id/loginAccountEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@mipmap/account_icon"
@@ -50,7 +50,7 @@
             android:singleLine="true"/>
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/loginPasswordEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -62,10 +62,11 @@
             android:singleLine="true"/>
 
         <Button
-            android:id="@+id/email_sign_in_button"
+            android:id="@+id/sign_in_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:onClick="onLoginButtonClick"
             android:background="@drawable/style_login_button"
             android:text="@string/action_sign_in"
             android:textSize="20sp"
