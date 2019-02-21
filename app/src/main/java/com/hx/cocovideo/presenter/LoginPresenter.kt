@@ -22,6 +22,7 @@ class LoginPresenter(override var view: LoginContract.View) : LoginContract.Pres
     private val model = LoginModel(object : DataResponseListener {
         override fun onResult(dataType: String, result: Any) {
             if (BaseModel.DATA_TYPE_LOGIN_SUCCESS.equals(dataType)) {
+                //TODO 保存用户信息
                 view.onLoginSuccess(result as User)
             } else if (BaseModel.DATA_TYPE_LOGIN_FAILED.equals(dataType)) {
                 view.onLoginFailed(result as String)

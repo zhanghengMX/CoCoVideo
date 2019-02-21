@@ -47,5 +47,12 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     override fun onLoginSuccess(user: User) {
         Log.d("HR", "user: " + user.name)
         Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show()
+        openMainPage()
+        finish()
+    }
+
+    private fun openMainPage() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
